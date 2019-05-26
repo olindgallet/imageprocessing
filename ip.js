@@ -127,27 +127,27 @@ function processSharpen(img, filename){
   image.scan(0, 0, image.bitmap.width, image.bitmap.height, function (x, y, idx) {
 	
     if (isPixelSurrounded(image.bitmap.data, image.bitmap.width, image.bitmap.height, idx, 1)){
-	  let northMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) - 4] + image.bitmap.data[idx - (image.bitmap.width * 4)] + image.bitmap.data[idx-(image.bitmap.width * 4) + 4]) / 3
-	  let northMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) - 3] + image.bitmap.data[idx - (image.bitmap.width * 4) + 1] + image.bitmap.data[idx-(image.bitmap.width * 4) + 5]) / 3
-	  let northMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) - 2] + image.bitmap.data[idx - (image.bitmap.width * 4) + 2] + image.bitmap.data[idx-(image.bitmap.width * 4) + 6]) / 3
+      let northMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) - 4] + image.bitmap.data[idx - (image.bitmap.width * 4)] + image.bitmap.data[idx-(image.bitmap.width * 4) + 4]) / 3
+      let northMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) - 3] + image.bitmap.data[idx - (image.bitmap.width * 4) + 1] + image.bitmap.data[idx-(image.bitmap.width * 4) + 5]) / 3
+      let northMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) - 2] + image.bitmap.data[idx - (image.bitmap.width * 4) + 2] + image.bitmap.data[idx-(image.bitmap.width * 4) + 6]) / 3
 			
-	  let eastMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) + 4] + image.bitmap.data[idx + 4] + image.bitmap.data[idx + (image.bitmap.width * 4) + 4]) / 3
-	  let eastMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) + 5] + image.bitmap.data[idx + 5] + image.bitmap.data[idx + (image.bitmap.width * 4) + 5]) / 3
-	  let eastMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) + 6] + image.bitmap.data[idx + 6] + image.bitmap.data[idx + (image.bitmap.width * 4) + 6]) / 3
+      let eastMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) + 4] + image.bitmap.data[idx + 4] + image.bitmap.data[idx + (image.bitmap.width * 4) + 4]) / 3
+      let eastMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) + 5] + image.bitmap.data[idx + 5] + image.bitmap.data[idx + (image.bitmap.width * 4) + 5]) / 3
+      let eastMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) + 6] + image.bitmap.data[idx + 6] + image.bitmap.data[idx + (image.bitmap.width * 4) + 6]) / 3
 		   
-	  let southMeanRed   = (image.bitmap.data[idx + (image.bitmap.width * 4) - 4] + image.bitmap.data[idx - (image.bitmap.width * 4)] + image.bitmap.data[idx-(image.bitmap.width * 4) + 4]) / 3
-	  let southMeanGreen = (image.bitmap.data[idx + (image.bitmap.width * 4) - 3] + image.bitmap.data[idx - (image.bitmap.width * 4) + 1] + image.bitmap.data[idx-(image.bitmap.width * 4) + 5]) / 3
-	  let southMeanBlue  = (image.bitmap.data[idx + (image.bitmap.width * 4) - 2] + image.bitmap.data[idx - (image.bitmap.width * 4) + 2] + image.bitmap.data[idx-(image.bitmap.width * 4) + 6]) / 3
+      let southMeanRed   = (image.bitmap.data[idx + (image.bitmap.width * 4) - 4] + image.bitmap.data[idx - (image.bitmap.width * 4)] + image.bitmap.data[idx-(image.bitmap.width * 4) + 4]) / 3
+      let southMeanGreen = (image.bitmap.data[idx + (image.bitmap.width * 4) - 3] + image.bitmap.data[idx - (image.bitmap.width * 4) + 1] + image.bitmap.data[idx-(image.bitmap.width * 4) + 5]) / 3
+      let southMeanBlue  = (image.bitmap.data[idx + (image.bitmap.width * 4) - 2] + image.bitmap.data[idx - (image.bitmap.width * 4) + 2] + image.bitmap.data[idx-(image.bitmap.width * 4) + 6]) / 3
 			
-	  let westMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) - 4] + image.bitmap.data[idx + (image.bitmap.width * 4)] + image.bitmap.data[idx + (image.bitmap.width * 4) + 4]) / 3
-	  let westMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) - 3] + image.bitmap.data[idx + (image.bitmap.width * 4) + 1] + image.bitmap.data[idx + (image.bitmap.width * 4) + 5]) / 3
-	  let westMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) - 2] + image.bitmap.data[idx + (image.bitmap.width * 4) + 2] + image.bitmap.data[idx + (image.bitmap.width * 4) + 6]) / 3
+      let westMeanRed   = (image.bitmap.data[idx - (image.bitmap.width * 4) - 4] + image.bitmap.data[idx + (image.bitmap.width * 4)] + image.bitmap.data[idx + (image.bitmap.width * 4) + 4]) / 3
+      let westMeanGreen = (image.bitmap.data[idx - (image.bitmap.width * 4) - 3] + image.bitmap.data[idx + (image.bitmap.width * 4) + 1] + image.bitmap.data[idx + (image.bitmap.width * 4) + 5]) / 3
+      let westMeanBlue  = (image.bitmap.data[idx - (image.bitmap.width * 4) - 2] + image.bitmap.data[idx + (image.bitmap.width * 4) + 2] + image.bitmap.data[idx + (image.bitmap.width * 4) + 6]) / 3
 			
-	  image.bitmap.data[idx]     = Math.min(northMeanRed, eastMeanRed, southMeanRed, westMeanRed, 100);
-	  image.bitmap.data[idx + 1] = Math.min(northMeanGreen, eastMeanGreen, southMeanGreen, westMeanGreen, 100);
-	  image.bitmap.data[idx + 2] = Math.min(northMeanBlue, eastMeanBlue, southMeanBlue, westMeanBlue, 100);
+      image.bitmap.data[idx]     = Math.min(northMeanRed, eastMeanRed, southMeanRed, westMeanRed, 100);
+      image.bitmap.data[idx + 1] = Math.min(northMeanGreen, eastMeanGreen, southMeanGreen, westMeanGreen, 100);
+      image.bitmap.data[idx + 2] = Math.min(northMeanBlue, eastMeanBlue, southMeanBlue, westMeanBlue, 100);
 			
-	  image.bitmap.data[idx + 3] = 255;
+      image.bitmap.data[idx + 3] = 255;
     } 
 	
   });
